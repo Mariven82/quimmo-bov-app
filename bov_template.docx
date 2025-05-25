@@ -1,0 +1,33 @@
+
+Broker Opinion
+
+Indirizzo: {{ indirizzo }}
+Superficie: {{ superficie }} mq
+Altezza interna: {{ altezza }}
+Categoria: {{ categoria }}
+Classe energetica: {{ classe_energetica }}
+
+Descrizione:
+{{ descrizione }}
+
+Comparabili:
+{% for comp in comparabili %}
+- {{ comp.indirizzo }} | {{ comp.mq }} mq | €{{ comp.prezzo }}
+{% endfor %}
+
+Valore stimato:
+- Minimo: €{{ valore_totale_min }}
+- OMV: €{{ valore_totale_medio }}
+- Massimo: €{{ valore_totale_max }}
+
+NTN (Transazioni Normalizzate):
+| Anno | Residenziale | Commerciale |
+|------|--------------|-------------|
+{% for i in range(ntn_anni|length) %}
+| {{ ntn_anni[i] }} | {{ ntn_res[i] }} | {{ ntn_comm[i] }} |
+{% endfor %}
+
+Criticità:
+- Contesto: {{ criticita.contesto }}
+- Stato: {{ criticita.stato }}
+- Mercato: {{ criticita.mercato }}
